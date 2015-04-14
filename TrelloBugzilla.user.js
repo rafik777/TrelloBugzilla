@@ -64,4 +64,5 @@ unsafeWindow.$("body").delegate(".js-card-title", "keypress", function(e){
     }
 });
 
+setTimeout(addBugzillaBadge, 1000);
 setInterval(addBugzillaBadge, 10000);
