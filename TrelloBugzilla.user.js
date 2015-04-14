@@ -15,13 +15,17 @@ var bugzillaLink = 'https://support.cgmpolska.pl/show_bug.cgi?id=';
 
 var addBugzillaBadge = function() {
     $(".list-card-title").each(function(i,val){
-        //console.log($(this).html());
         if ($(this).html().match(/Bug \d+/)) {
             var regExpMatch = $(this).html().match(/Bug (\d+)/);
-            //console.log("match found " + $(this).parent().children('.badges'));
-            //console.log("bugz found " + $(this).parent().find(".bugz").length);
             if ($(this).parent().find(".bugz").length < 1){
-                $(this).parent().children('.badges').append('<a class="bugz" href="'+ bugzillaLink + regExpMatch[1] +'">'+bugzillaImg+'</a>');}
+                var sHref = bugzillaLink + regExpMatch[1];
+                var newLink = $('<a class="bugz" href="#">'+bugzillaImg+'</a>').click( function( event ) {
+                   window.open( sHref, '_blank').focus();
+                   event.preventDefault();
+                   return false;
+                });
+                $(this).parent().children('.badges').append(newLink );
+            }
         }
     });
 };
