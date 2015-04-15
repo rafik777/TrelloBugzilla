@@ -35,20 +35,16 @@ var addBugzillaBadge = function() {
 
 unsafeWindow.$("body").delegate(".js-card-title", "keypress", function(e){
     var code = (e.keyCode ? e.keyCode : e.which);
-    //console.log("code="+code);
     if(code == 32) { //Enter keycode
         var text = $(this).val();
-        //console.log("text="+text);
         var regExpMatch = text.match(/Bug (\d+)/);
         var textarea = $(this);
-        //console.log(regExpMatch);
         if (regExpMatch) {
             // see http://stackoverflow.com/questions/11007605/gm-xmlhttprequest-why-is-it-never-firing-the-onload-in-firefox
             setTimeout(function() {GM_xmlhttpRequest({
                 method: "GET",
                 url: bugzillaLink+regExpMatch[1],
                 onload: function(response) {
-                    //console.log( response.responseText);
                     var jq = $(response.responseText);
                     console.log($("#short_desc_nonedit_display", response.responseText).text());
                     textarea.val(jq.find(".bz_alias_short_desc_container b").text().replace(String.fromCharCode(160)," ")+ " - " + jq.find("#short_desc_nonedit_display").text());
