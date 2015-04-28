@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 
-
+var bzIcon= 'http://s17.postimg.org/6ylghgluz/cgm_bz.png';
 var bugzillaImg= '<img src="http://s17.postimg.org/6ylghgluz/cgm_bz.png" height="22" width="22" style="margin-right: 5px"/>';
 var bugzillaLink = 'https://support.cgmpolska.pl/show_bug.cgi?id=';
 
