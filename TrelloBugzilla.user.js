@@ -60,5 +60,33 @@ unsafeWindow.$("body").delegate(".js-card-title", "keypress", function(e){
     }
 });
 
-setTimeout(addBugzillaBadge, 1000);
-setInterval(addBugzillaBadge, 10000);
+
+/* link do zbiorczej listy zgłoszeń */
+
+var bzLinkMultiBugView = 'https://support.cgmpolska.pl/buglist.cgi?quicksearch='
+function createBugListLink(){
+ if ( $('#bugListLink').length === 0 ){
+
+    var bugs = {};
+    $('a.list-card-title').each(function(n,t){
+        var x = $(this).find('span').parent().text(),
+        y = /Bug \d+/.exec(x);
+        if (y && y.length > 0){
+        bugs[ y[0].split(' ')[1] ] = 1;
+        }
+    });
+    var bugListStr = Object.keys( bugs ).join(',')
+
+    // $('.board-header-btns.mod-left').append('<a id="bugListLink" href="' + bugListStr + '" class="board-header-btn">Lista zgłoszeń</a>')
+
+    $('.board-header-btns.mod-left').append('<a id="bugListLink" target="_blank" href="' + bzLinkMultiBugView + bugListStr + '" class="board-header-btn">\
+    <span class="board-header-btn-icon icon-sm"><img src="' + bzIcon + '" height="22" width="22" /></span>\
+    <span class="">Lista zgłoszeń</span>\
+    </a>')
+ }
+}
+
+setTimeout(addBugzillaBadge, 1500);
+setInterval(addBugzillaBadge, 5000);
+setTimeout(createBugListLink, 3000);
+
