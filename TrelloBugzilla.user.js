@@ -133,7 +133,7 @@ function createBugListLink(){
     }';
     document.getElementsByTagName('head')[0].appendChild(style);
 
-      var irame = '<div id="chartwrap" style="display:none;position:absolute;top:70px;left: 20px;margin:10px;padding:11px;">' +
+      var irame = '<div id="chartwrap" style="display:none;position:absolute;top:70px;left: 20px;margin:10px;padding:11px;z-index:100000000">' +
       '<iframe width="600" height="371" id="chart" seamless frameborder="0" scrolling="no"'+
 'src="https://docs.google.com/spreadsheets/d/1pAc6mpN7HA3qodHQb1xfNF8hoagqv1S0E5iuWHzK4NA/pubchart?oid=382175829&amp;format=interactive">'+
       '</iframe>'+
