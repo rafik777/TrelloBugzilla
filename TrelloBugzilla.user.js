@@ -92,7 +92,6 @@ function createBugListLink(){
     });
     var bugListStr = Object.keys( bugs ).join(',')
     link.attr('href',bzLinkMultiBugView + bugListStr);
-    console.log( bugListStr );
 }
 
 
